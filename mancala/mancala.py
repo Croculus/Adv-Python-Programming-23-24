@@ -19,7 +19,6 @@ bg_image = PhotoImage(file= r"C:\Users\dgard\Downloads\luhcalm.png")
 
 #callback function for when button is pressed
 def click(player, column):
-    print("l")
     if player != board.turn: #if button isn't pressed on the right turn
         return #do nothing
     board.move(column) #refer to the button that got pressed
