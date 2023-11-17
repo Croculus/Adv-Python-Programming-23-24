@@ -4,7 +4,7 @@ class Player(pygame.sprite.Sprite):
 
     def __init__(self):
        # Call the parent class (Sprite) constructor
-       pygame.sprite.Sprite.__init__(self)
+       pygame.sprite.Sprite.__init__(self) #start at 240, 365
        self.frame = 1  #1, 2, or 3
        # Create an image of the block, and fill it with a color.
        # This could also be an image loaded from the disk.

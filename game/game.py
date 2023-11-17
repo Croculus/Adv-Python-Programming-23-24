@@ -50,7 +50,7 @@ while True:
        if keys[pygame.K_SPACE]:
             game_state = "game"
             game_over = False
-   if game_state == " game":
+   if game_state == "game":
         background = pygame.image.load("backgrounds/Phyton Game Corner 2.jpg")
         player = pygame.image.load("sprites/Character1.png")
         screen.blit(background, (0, 0))
