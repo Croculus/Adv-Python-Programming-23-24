@@ -10,7 +10,7 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 game_state = "start_menu"
 
 clock = pygame.time.Clock()
-FPS = 6
+FPS = 60
 player = sprites.Player()
 
 def draw_start_menu():
@@ -22,7 +22,9 @@ def draw_start_menu():
     screen.blit(start_button, (screen_width/2 - start_button.get_width()/2, screen_height/2 + start_button.get_height()/2))
     pygame.display.update()
 
-
+player = sprites.Player()
+player_group = pygame.sprite.Group()
+player_group.add(player)
 while True: 
    clock.tick(FPS)
    for event in pygame.event.get(): 
@@ -34,16 +36,16 @@ while True:
        keys = pygame.key.get_pressed()
        if keys[pygame.K_y]:
             game_state = "game"
-            background = pygame.image.load("backgrounds/Phyton Game Corner 2.jpg")
-            screen.blit(background, (0, 0)) 
             game_over = False
    if game_state == "game":
         
-        player = sprites.Player()
-        player_group = pygame.sprite.Group()
-        player_group.add(player)
-        player_group.draw(screen)
+        
+        
+        background = pygame.image.load("backgrounds/Phyton Game Corner 2.jpg")
+        screen.blit(background, (0, 0)) 
         player_group.update()
+        player_group.draw(screen)
+        
         pygame.display.update()
         pygame.event.pump()
         
