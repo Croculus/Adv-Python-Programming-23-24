@@ -1,4 +1,4 @@
-import pygame, sprites, random
+import pygame, sprites
 
 
 
@@ -23,8 +23,10 @@ def draw_start_menu():
     pygame.display.update()
 
 player = sprites.Player()
+ball = sprites.Ball()
 player_group = pygame.sprite.Group()
 player_group.add(player)
+player_group.add(ball)
 while True: 
    clock.tick(FPS)
    for event in pygame.event.get(): 
@@ -45,7 +47,7 @@ while True:
         screen.blit(background, (0, 0)) 
         player_group.update()
         player_group.draw(screen)
-        
+        #print(pygame.mouse.get_pos())
         pygame.display.update()
         pygame.event.pump()
         
