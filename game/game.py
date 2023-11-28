@@ -1,6 +1,9 @@
 import pygame, sprites
 
 
+pygame.init()
+my_sound = pygame.mixer.Sound('/Users/karlsyriani/Ballgame/Adv-Python-Programming-23-24-1/game/backgrounds/y2mate.bz - NBA ON NBC THEME.mp3')
+my_sound.play()
 
 #initialization
 pygame.init()
@@ -14,10 +17,11 @@ FPS = 60
 player = sprites.Player()
 
 def draw_start_menu():
-    screen.fill((0, 255, 0))
-    font = pygame.font.SysFont('arial', 40)
-    title = font.render('My Game', True, (255, 255, 255))
-    start_button = font.render('Start (with y)', True, (255, 255, 255))
+    screen.fill((0, 0, 0))
+    font = pygame.font.SysFont('bangers', 100)
+    font1 = pygame.font.SysFont('bangers', 50)
+    title = font.render('3 POINT SHOOTOUT', True, (255, 0, 0))
+    start_button = font1.render('Press Y to Begin', True, (0, 0, 255))
     screen.blit(title, (screen_width/2 - title.get_width()/2, screen_height/2 - title.get_height()/2))
     screen.blit(start_button, (screen_width/2 - start_button.get_width()/2, screen_height/2 + start_button.get_height()/2))
     pygame.display.update()
@@ -41,8 +45,7 @@ while True:
             game_over = False
    if game_state == "game":
         
-        
-        
+
         background = pygame.image.load("backgrounds/Phyton Game Corner 2.jpg")
         screen.blit(background, (0, 0)) 
         player_group.update()
@@ -52,4 +55,6 @@ while True:
         pygame.event.pump()
         
             
-   #print(pygame.mouse.get_pos()) 250 425
+   #print(pygame.mouse.get_pos())
+   #hoop is 480 270
+
