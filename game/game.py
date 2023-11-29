@@ -10,8 +10,7 @@ screen_width = 950
 screen_height = 700
 screen = pygame.display.set_mode((screen_width, screen_height))
 game_state = "start_menu"
-#my_sound = pygame.mixer.Sound('/Users/karlsyriani/Ballgame/Adv-Python-Programming-23-24-1/game/backgrounds/y2mate.bz - NBA ON NBC THEME.mp3')
-#my_sound.play()
+
 clock = pygame.time.Clock()
 FPS = 60
 player = sprites.Player()
@@ -38,7 +37,7 @@ while True:
            pygame.quit()
            quit()
    if game_state == "start_menu":
-       draw_start_menu()
+       draw_start_menu()        
        keys = pygame.key.get_pressed()
        if keys[pygame.K_y]:
             game_state = "game"
@@ -55,6 +54,4 @@ while True:
         pygame.event.pump()
         
             
-   #print(pygame.mouse.get_pos())
-   #hoop is 480 270
-
+   #print(pygame.mouse.get_pos()) 480, 270
