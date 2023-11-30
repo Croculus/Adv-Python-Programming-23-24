@@ -44,11 +44,16 @@ class Player(pygame.sprite.Sprite):
             #release data
             if self.sent_data == False: # checks if data has been sent then quits
                  #raw number to reduce chance of making shots
-                shot_percentage = (-100/(math.pow(jumpshot_peak,2)))*(math.pow(self.count-jumpshot_peak, 2))+100
-                shot_make = random.choices([True, False],cum_weights=[shot_percentage, 100])
-                release = pygame.event.Event(pygame.USEREVENT+1, {'make': shot_make, 'x': self.x, 'y': self.y}) #send event, notify ball to move
+                if self.count < 45 or self.count > 55:
+                    release = pygame.event.Event(pygame.USEREVENT+1, {'make': False, 'x': self.x, 'y': self.y}) #send event, notify ball to move
+                    print(self.count)
+                    print('miss\n')
+                else:
+                    release = pygame.event.Event(pygame.USEREVENT+1, {'make': True, 'x': self.x, 'y': self.y})
+                    background = pygame.USEREVENT +2
+                    pygame.event.post(pygame.event.Event(background))
+                    print('make')
                 pygame.event.post(release)
-                print('{},{}'.format(str(shot_percentage), str(shot_make)))
                 self.sent_data = True
 
             #release animation
@@ -87,7 +92,7 @@ class Ball(pygame.sprite.Sprite):
        # Update the position of this object by setting the values of rect.x and rect.y
        self.rect = self.image.get_rect()
        self.x = 310
-       self.y = 270
+       self.y = 200
        self.count=1
        self.in_motion = False
 
@@ -105,7 +110,7 @@ class Ball(pygame.sprite.Sprite):
                 self.image = pygame.image.load("sprites/ball.png")
                 self.rect = self.image.get_rect()
                 self.x = 310
-                self.y = 270
+                self.y = 200
                 self.in_motion = False
 
         release= pygame.event.get(pygame.USEREVENT+1) #get for event
@@ -114,7 +119,6 @@ class Ball(pygame.sprite.Sprite):
         else:
             self.count = 1
             self.in_motion = True
-            print('true')
 
             self.rect.center= [self.x,self.y]
             #math for ball path
@@ -122,40 +126,3 @@ class Ball(pygame.sprite.Sprite):
 
     #be sure to override update to change animation
 
-class Bar(pygame.sprite.Sprite):
-
-    def __init__(self):
-       # Call the parent class (Sprite) constructor
-       pygame.sprite.Sprite.__init__(self)
-
-       # Create an image of the block, and fill it with a color.
-       # This could also be an image loaded from the disk.
-       self.image = pygame.image.load("backgrounds/Phyton Game Corner 2.jpg") #placeholder image
-       self.image.convert()
-
-       # Fetch the rectangle object that has the dimensions of the image
-       # Update the position of this object by setting the values of rect.x and rect.y
-       self.rect = self.image.get_rect()
-
-    def update(self) -> None:
-        pass
-    #be sure to override update to change animation
-
-class Cart(pygame.sprite.Sprite):
-
-    def __init__(self):
-       # Call the parent class (Sprite) constructor
-       pygame.sprite.Sprite.__init__(self)
-
-       # Create an image of the block, and fill it with a color.
-       # This could also be an image loaded from the disk.
-       self.image = pygame.image.load("backgrounds/Phyton Game Corner 2.jpg") #placeholder image
-       self.image.convert()
-
-       # Fetch the rectangle object that has the dimensions of the image
-       # Update the position of this object by setting the values of rect.x and rect.y
-       self.rect = self.image.get_rect()
-
-    def update(self) -> None:
-        pass
-    #be sure to override update to change animation

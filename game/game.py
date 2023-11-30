@@ -17,12 +17,8 @@ player = sprites.Player()
 
 def draw_start_menu():
     screen.fill((0, 0, 0))
-    font = pygame.font.SysFont('bangers', 100)
-    font1 = pygame.font.SysFont('bangers', 50)
-    title = font.render('3 POINT SHOOTOUT', True, (255, 0, 0))
-    start_button = font1.render('Press Y to Begin', True, (0, 0, 255))
-    screen.blit(title, (screen_width/2 - title.get_width()/2, screen_height/2 - title.get_height()/2))
-    screen.blit(start_button, (screen_width/2 - start_button.get_width()/2, screen_height/2 + start_button.get_height()/2))
+    start = pygame.image.load("backgrounds/Game Logo.jpg")
+    screen.blit(start, (0,0))
     pygame.display.update()
 
 player = sprites.Player()
@@ -43,9 +39,15 @@ while True:
             game_state = "game"
             game_over = False
    if game_state == "game":
-        
-
-        background = pygame.image.load("backgrounds/Phyton Game Corner 2.jpg")
+        green_frames = 0
+          
+        if event.type == pygame.USEREVENT+2 or green_frames > 0:
+            background = pygame.image.load("backgrounds/Green Corner 2.png")
+            green_frames = 5
+        elif green_frames > 0:
+            pass
+        else:
+            background = pygame.image.load("backgrounds/Phyton Game Corner 2.jpg")
         screen.blit(background, (0, 0)) 
         player_group.update()
         player_group.draw(screen)
