@@ -169,7 +169,6 @@ class Scoreboard(pygame.sprite.Sprite):
         else:
             self.score +=1
         self.time -=1 # remove a frame
-        print(self.time)
         self.rect = self.image.fill((255,0, 0))
         self.textSurf = self.font.render('Score: {} Time: {}'.format(str(self.score), str(int(self.time/60))), 1, (0,0,0))
         self.image.blit(self.textSurf, [self.width/2 - self.W_text/2, self.height/2 - self.H_text/2])
